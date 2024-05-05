@@ -6,8 +6,11 @@
   <%= image_tag 'gahakukun_batsu.png', width: 100, height: 100 %>
   </div>
   <div class="flex h-20 justify-center items-center my-4">
-    <button class="btn btn-primary">
+    <button class="btn btn-primary m-4">
       <%= link_to '最初に戻る', root_path %>
+    </button>
+    <button class="btn btn-primary m-4">
+      <%= link_to "結果をXでシェア", "https://twitter.com/share?url&text=画伯の芸術には及ばなかった…%0a%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" %>
     </button>
   </div>
 </div>
