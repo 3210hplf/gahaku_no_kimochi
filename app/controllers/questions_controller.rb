@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
   def play
+    @q = Question.all.sample
+    @choices = @q.choices
   end
 
   def correct

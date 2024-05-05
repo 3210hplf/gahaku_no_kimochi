@@ -1,4 +1,27 @@
-<div>
-  <h1 class="font-bold text-4xl">Questions#play</h1>
-  <p>Find me in app/views/questions/play.html.erb</p>
+<div class="container mx-auto">
+  <div class="flex h-0 justify-center items-center my-4">
+    <%= image_tag 'mondai.png' %>
+  </div>
+  <div class="flex h-30 justify-center items-center mt-10">
+    <%= image_tag @q.image_url, width: 300, height: 300 %>
+  </div>
+  <div class="flex h-30 justify-center items-center">
+    <h1 class="text-l font-bold text-right">©︎2024 <%= @q.author %>画伯(<%= @q.age %>歳)</h1>
+  </div>
+  <div class="card-body items-center text-center">
+    <h2 class="card-title">これだ！と思うのをクリックするのじゃ</h2>
+      <%= image_tag 'gahakukun.png', width: 100, height: 100 %>
+    <div class="flex items-stretch ...">
+      <div class="join join-vertical">
+        <% @choices.each do |c| %>
+          <button class="btn btn-lg m-3">
+            <% if c.correct_answer %>
+              <%= link_to c.answer, correct_path %>
+            <% else %>
+              <%= link_to c.answer, incorrect_path %>
+            <% end %>
+          </button>
+      <% end %>
+    </div>
+  </div>
 </div>
