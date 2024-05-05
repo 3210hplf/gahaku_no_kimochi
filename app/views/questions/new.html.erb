@@ -1,0 +1,28 @@
+<div class="justify-center items-center m-4">
+  <%= form_with model: @question do |f| %>
+    <%#= render 'shared/error_messages', object: f.object %>
+    <div class="mb-3">
+      <%= f.label :author, "がはくのなまえ" %>
+      <%= f.text_field :author, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :age, "ねんれい" %>
+      <%= f.number_field :age, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :image, "さくひん" %>
+      <%= f.file_field :image, class: "form-control", accept: 'image/*' %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+    <%# choieモデルも同じフォームで入力 %>
+    <%= f.fields_for :choices do |c_f| %>
+      <div class="mb-3">
+        <%= c_f.label :answer, "こたえ" %>
+        <%= c_f.text_field :answer, class: "form-control" %>
+        <%= c_f.label :correct_answer, "せいかいにチェック" %>
+        <%= c_f.check_box :correct_answer %>
+      </div>
+    <% end %>
+    <%= f.submit nil, class: "btn btn-primary", data: { disable_with: "登録" } %>
+  <% end %>
+</div>
