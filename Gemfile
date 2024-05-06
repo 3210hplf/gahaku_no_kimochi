@@ -31,7 +31,9 @@ gem "jbuilder"
 
 # 新しく追加
 gem 'carrierwave', '~> 3.0'
-
+gem 'fog-aws'
+# 環境変数を使うためのgem
+gem 'dotenv-rails'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
