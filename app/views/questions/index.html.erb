@@ -1,4 +1,12 @@
-<div>
-  <h1 class="font-bold text-4xl">Questions#index</h1>
-  <p>Find me in app/views/questions/index.html.erb</p>
+<div class="d-flex">
+  <% @questions.each do |q| %>
+    <div class="card-body items-center text-center">
+      <%= image_tag q.image_url, width: 100, height: 100 %>
+    </div>
+    <div class="text-end">
+      # link_toではDELETEメソッドを使えないため、button_toを使う
+      # javascriptが正常に動作してくれればlink_toでも問題ない
+      <%= button_to '削除', question_path(q), class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: '本当に削除しますか？' } %>
+    </div>
+  <% end %>
 </div>
