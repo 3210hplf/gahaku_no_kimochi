@@ -1,39 +1,32 @@
 <header>
-  <nav class='navbar navbar-expand-lg navigation navbar-light bg-light'>
-    <%= link_to '/', class: 'navbar-brand' do %>
-      <%= image_tag 'title.png' %>
-    <% end %>
-    <button class='navbar-toggler' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent'
-      aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
-      <span class='navbar-toggler-icon'></span>
-    </button>
-
-    <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-      <ul class='navbar-nav ms-auto main-nav align-items-center'>
-        <li class='nav-item dropdown dropdown-slide'>
-          <%= link_to '掲示板', '#', class: 'nav-link dropdown-toggle', data: { bs_toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' }, id: 'header-board-menu' %>
-          <div class='dropdown-menu dropdown-menu-end'>
-            <%= link_to '掲示板一覧', '#', class: 'dropdown-item' %>
-            <%= link_to '掲示板作成', '#', class: 'dropdown-item' %>
-          </div>
-        </li>
-
-        <li class='nav-item'>
-          <%= link_to 'ブックマーク一覧', '#', class: 'nav-link' %>
-        </li>
-
-        <li class='nav-item dropdown dropdown-slide'>
-          <%= link_to '#', class: 'nav-link', data: { bs_toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' }, id: 'header-profile' do %>
+  <div class="navbar bg-base-100">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl">
+      <%= link_to '/', class: 'navbar-brand' do %>
+        <%= image_tag 'title.png' %>
+      <% end %>
+    </a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li>
+        <%= link_to 'クイズを作る', new_question_path %>
+      </li>
+      <li>
+        <%= link_to 'クイズを見る', questions_path %>
+      </li>
+      <li>
+        <details>
+          <summary>
             <%= image_tag 'gahakukun.png', class: 'rounded-circle mr15', width: '40', height: '40' %>
-          <% end %>
-          <div class='dropdown-menu dropdown-menu-end'>
-            <div class='dropdown-item'>らんてっく たろう</div>
-            <div class='dropdown-divider'></div>
-            <%= link_to 'プロフィール', '#', class: 'dropdown-item' %>
-            <%= link_to 'ログアウト', '#', class: 'dropdown-item' %>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
+          </summary>
+          <ul class="p-2 bg-base-100 rounded-t-none">
+            <li><%= link_to 'プロフィール', '#', class: 'p-2.5' %></li>
+            <li><%= link_to 'ログアウト', '#', class: 'p-2.5' %></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+</div>
 </header>
