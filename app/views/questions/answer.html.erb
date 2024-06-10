@@ -1,0 +1,24 @@
+<div class="w-5/6 mx-auto max-w-screen-xl my-0 text-center">
+  <% if @is_correct %>
+    <div class="flex h-0 justify-center items-center my-4"><%= image_tag 'pinpon.png' %></div>
+    <div class="flex h-40 justify-center items-center my-4"><%= image_tag 'gahakukun_maru.png', width: 100, height: 100 %></div>
+  <% else %>
+    <div class="flex h-0 justify-center items-center my-4"><%= image_tag 'bubu.png' %></div>
+    <div class="flex h-40 justify-center items-center my-4"><%= image_tag 'gahakukun_batsu.png', width: 100, height: 100 %></div>
+  <% end %>
+  <div class="flex h-30 justify-center items-center mt-10">
+    <%= image_tag @question.image_url, width: 100, height: 100 %>
+  </div>
+  <h1><%= @answer %></h1>
+  <div class="flex h-20 justify-center items-center my-4">
+    <button class="btn btn-primary m-4">
+      <%= link_to '最初に戻る', root_path %>
+    </button>
+    <button class="btn btn-primary m-4">
+      <%= link_to '次の問題へ', play_path %>
+    </button>
+    <button class="btn btn-primary m-4">
+      <%= link_to "結果をXでシェア", "https://twitter.com/share?url&text=画伯の気持ちって難しい…%0a%23がはくのきもち%0a%23ミニアプリウィーク%0a%23RUNTEQ%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" %>
+    </button>
+  </div>
+</div>
