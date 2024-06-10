@@ -4,10 +4,15 @@ class QuestionsController < ApplicationController
     @choices = @q.choices
   end
 
-  def correct
-  end
-
-  def incorrect
+  def answer
+    # params[:question_id]でおくられてきたquestionのidを取得
+    @question = Question.find(params[:question_id])
+    # params[:choice_id]でユーザーが選択したchoiceのidを取得
+    @user_choice = @question.choices.find(params[:choice_id])
+    # 選択したchoiceが正解の場合はtrue、不正解の場合はfalseを格納
+    @is_correct = @user_choice.correct_answer
+    # 正解の選択肢のanswerを取得
+    @answer = @question.choices.find_by(correct_answer: true).answer
   end
 
   def new

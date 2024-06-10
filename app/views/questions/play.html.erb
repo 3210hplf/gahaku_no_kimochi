@@ -10,18 +10,15 @@
   </div>
   <div class="card-body items-center text-center">
     <h2 class="card-title">これだ！と思うのをクリックするのじゃ</h2>
-      <%= image_tag 'gahakukun.png', width: 100, height: 100 %>
-    <div class="flex items-stretch ...">
-      <div class="join join-vertical">
-        <% @choices.each do |c| %>
-          <button class="btn btn-lg m-3">
-            <% if c.correct_answer %>
-              <%= link_to c.answer, correct_path %>
-            <% else %>
-              <%= link_to c.answer, incorrect_path %>
-            <% end %>
-          </button>
+    <%= image_tag 'gahakukun.png', width: 100, height: 100 %>
+    <%= form_with url: answer_path, method: :get do |f| %>
+      <%# paramsで送るのは :question_id=@q.id, :choice_id=c.id %>
+      <%= f.hidden_field :question_id, value: @q.id %>
+      <% @choices.each do |c| %>
+        <%= f.radio_button :choice_id, c.id %>
+        <%= f.label :choice_id, c.answer, value: c.id %>
       <% end %>
-    </div>
+      <%= f.submit '回答する', class: 'btn btn-primary' %>
+    <% end %>    
   </div>
 </div>
