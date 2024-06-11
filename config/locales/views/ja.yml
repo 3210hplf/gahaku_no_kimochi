@@ -1,0 +1,24 @@
+ja:
+  helpers:      # フォームヘルパーに対応(create, update, submitを判別してくれる)
+    submit: 
+      create: 登録
+      submit: 保存
+      update: 更新
+    label:
+      email: メールアドレス
+      password: パスワード
+  user_sessions: # app/views/user_sessionsに対応
+    new:         # app/views/user_sessions/new.html.erbに対応
+      title: ログイン
+      login: ログイン
+      to_register_page: 登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+  users:         # app/views/usersに対応
+    new:         # app/views/users/new.html.erbに対応
+      title: ユーザー登録
+      to_login_page: ログインページへ
+  header:        # app/views/layouts/_header.html.erbに対応
+    login: ログイン
+    logout: ログアウト
+    profile: プロフィール
+    # ヘッダーの明記確定後に追加していく
