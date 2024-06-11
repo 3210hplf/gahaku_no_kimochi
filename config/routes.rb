@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root 'staticpages#top'
+  resources :users, only: %i[new create]
+  get 'login', to: 'user_sessions#new'
+  post 'login', to: 'user_sessions#create'
+  delete 'logout', to: 'user_sessions#destroy'
   resources :questions, only: %i[index new create destroy]
   get 'questions/play', to: 'questions#play', :as => :play
   get 'questions/answer', to: 'questions#answer', :as => :answer

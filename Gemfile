@@ -34,6 +34,9 @@ gem 'carrierwave', '~> 3.0'
 gem 'fog-aws'
 # 環境変数を使うためのgem
 gem 'dotenv-rails'
+# ユーザー認証システムを実装するためのgem
+gem 'sorcery'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
