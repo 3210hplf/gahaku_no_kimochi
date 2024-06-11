@@ -29,14 +29,16 @@ gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-# 新しく追加
+# 画像をアップロードするためのgem
 gem 'carrierwave', '~> 3.0'
+# 画像をAWS S3にアップロードするためのgem
 gem 'fog-aws'
 # 環境変数を使うためのgem
 gem 'dotenv-rails'
 # ユーザー認証システムを実装するためのgem
 gem 'sorcery'
-
+# i18nのためのgem
+gem 'rails-i18n'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
