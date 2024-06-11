@@ -26,11 +26,10 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
-      Rails.logger.info("Question was successfully saved.")
-      redirect_to root_path
+      redirect_to root_path, success: 'がはくの作品をクイズに出展しました！'
     else
-      Rails.logger.info("Question was not saved. Errors: #{@question.errors.full_messages.join(", ")}")
-      render 'new'
+      flash.now[:danger] = '出展が上手くいきませんでした'
+      render :new, status: :unprocessable_entity
     end
   end
 

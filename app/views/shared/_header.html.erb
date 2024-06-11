@@ -21,8 +21,9 @@
               <%= image_tag 'gahakukun.png', class: 'rounded-circle mr15', width: '40', height: '40' %>
             </summary>
             <ul class="p-2 bg-base-100 rounded-t-none">
-              <li><%= link_to 'プロフィール', '#', class: 'p-2.5' %></li>
-              <li><%= link_to 'ログアウト', '#', class: 'p-2.5' %></li>
+              <li><%= link_to 'がはく登録', new_user_path, class: 'p-2.5' %></li>
+              <li><%= link_to 'ログイン', login_path, class: 'p-2.5' %></li>
+              <li><%= link_to 'ログアウト', logout_path, class: 'p-2.5', data: { turbo_method: :delete }%></li>
             </ul>
           </details>
         </li>

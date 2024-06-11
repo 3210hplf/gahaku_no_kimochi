@@ -10,9 +10,10 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_to root_path
+      redirect_to root_path, success: 'ようこそ！ログイン完了です！'
     else
-      render :new
+      flash.now[:danger] = 'ログインが上手くいきませんでした'
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -21,6 +22,6 @@ class UserSessionsController < ApplicationController
     # ログアウト処理を行う
     logout
     # redirect_toメソッドでstatus: :see_otherを指定すると、POSTリクエスト後の新しいページへのGETリクエスト移動が促され、フォームの再送信を防ぐことができる
-    redirect_to root_path, status: :see_other
+    redirect_to root_path, status: :see_other, success: 'ログアウトしました'
   end
 end
