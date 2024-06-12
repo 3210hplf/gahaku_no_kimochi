@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  # drawingモデルと多対1の関係を記述
+  has_many :drawings, dependent: :destroy
   # password；最小で3文字以上必要（新規レコード作成もしくはcrypted_passwordカラムが更新される時のみ適応）
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   # password_confirmation：値が空でないこと・passwordの値と一致すること（新規レコード作成もしくはcrypted_passwordカラムが更新される時のみ適応）

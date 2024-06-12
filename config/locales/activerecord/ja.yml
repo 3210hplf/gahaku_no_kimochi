@@ -1,4 +1,4 @@
-ja:
+ja:              # form_withで使われるヘルパーに対応
   activerecord:  # ActiveRecordモデルとその属性名に対応
     models:      # モデル名
       user: ユーザー
@@ -8,3 +8,5 @@ ja:
         name: 名前
         password: パスワード
         password_confirmation: パスワード確認
+      shiritori_game:
+        game_title: お題

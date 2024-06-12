@@ -3,6 +3,8 @@ require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
 
 CarrierWave.configure do |config|
+  # 開発環境と本番環境で保存先を変更
+  if Rails.env.production?
     config.storage :fog
     config.fog_provider = 'fog/aws'
     config.fog_directory  = 'kahakunobucket' # 作成したバケット名
@@ -13,4 +15,8 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1',   # アジアパシフィック(東京)を選択した場合
       path_style: true
     }
+  else
+    config.storage = :file
+    config.enable_processing = Rails.env.development?
+  end
 end
