@@ -7,6 +7,8 @@ ja:
     label:
       email: メールアドレス
       password: パスワード
+      password_confirmation: パスワード確認
+      game_title: お題
   user_sessions: # app/views/user_sessionsに対応
     new:         # app/views/user_sessions/new.html.erbに対応
       title: ログイン
@@ -22,3 +24,7 @@ ja:
     logout: ログアウト
     profile: プロフィール
     # ヘッダーの明記確定後に追加していく
+  shiritori_games:
+    new:
+      title: お題作成
+      game_title: お題

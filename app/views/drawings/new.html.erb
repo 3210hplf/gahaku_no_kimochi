@@ -1,0 +1,32 @@
+<!-- app/views/drawings/new.html.erb -->
+<h1 class="text-2xl font-bold mb-4">新しい描画を作成</h1>
+<%= form_with model: @drawing, url: shiritori_game_drawings_path, local: true, class: "form-control" do |form| %>
+
+  <div class="form-group mb-4">
+    <%= form.label :title, "タイトル", class: "label" %>
+    <%= form.text_field :title, class: "input input-bordered w-full" %>
+  </div>
+
+  <div class="form-group mb-4">
+    <%= form.label :turn_count, "ターン数", class: "label" %>
+    <%= form.select :turn_count, Drawing.turn_counts.keys.map { |w| [w.humanize, w] }, {}, class: "select select-bordered w-full" %>
+  </div>
+
+  <div class="form-group mb-4">
+    <%= form.label :artwork, "アートワーク", class: "label" %>
+    <%= form.file_field :artwork, class: "file-input file-input-bordered w-full" %>
+    <%= form.hidden_field :artwork_cache %>
+  </div>
+
+  <div class="form-group mb-4">
+    <%= image_tag @drawing.artwork_url, id: "preview", width: "300", height: "200" if @drawing.artwork.present? %>
+  </div>
+
+  <%= form.hidden_field :shiritori_game_id, value: params[:shiritori_game_id] %>
+
+  <div class="form-group">
+    <%= form.submit "描画を作成", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'キャンセル', shiritori_game_path(params[:shiritori_game_id]), class: "btn btn-secondary mt-4" %>

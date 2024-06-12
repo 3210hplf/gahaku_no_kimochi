@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   get 'questions/answer', to: 'questions#answer', :as => :answer
   get 'questions/correct', to: 'questions#correct', :as => :correct
   get 'questions/incorrect', to: 'questions#incorrect', :as => :incorrect
+  resources :shiritori_games, only: %i[new create index show] do
+    resources :drawings, only: %i[new create index]
+  end
 end
