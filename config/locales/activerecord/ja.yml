@@ -10,3 +10,16 @@ ja:              # form_withで使われるヘルパーに対応
         password_confirmation: パスワード確認
       shiritori_game:
         game_title: お題
+  enums:       # enumで定義した値に対応
+    shiritori_game:
+      status:
+        in_progress: 進行中
+        success: 成功
+        failure: 失敗
+    drawing:
+      turn_count:
+        first_turn: 1人目
+        second_turn: 2人目
+        third_turn: 3人目
+        fourth_turn: 4人目
+        fifth_turn: 5人目

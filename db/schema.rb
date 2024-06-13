@@ -41,6 +41,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_124608) do
   end
 
   create_table "shiritori_games", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.string "game_title", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
@@ -60,4 +61,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_124608) do
   add_foreign_key "choices", "questions"
   add_foreign_key "drawings", "shiritori_games"
   add_foreign_key "drawings", "users"
+  add_foreign_key "shiritori_games", "users"
 end
