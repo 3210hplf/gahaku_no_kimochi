@@ -4,7 +4,7 @@ class ShiritoriGamesController < ApplicationController
   end
 
   def create
-    @shiritori_game = ShiritoriGame.new(shiritori_game_params)
+    @shiritori_game = current_user.shiritori_games.build(shiritori_game_params)
     if @shiritori_game.save
       redirect_to new_shiritori_game_drawing_path(@shiritori_game), notice: 'ゲームのお題を作成しました! あなたが1人目のがはくとなりましょう!'
     else
