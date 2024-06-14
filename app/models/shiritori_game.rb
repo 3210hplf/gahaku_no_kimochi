@@ -13,6 +13,8 @@ class ShiritoriGame < ApplicationRecord
     drawings.max_by(&:turn_count)&.turn_count || 0
   end
 
+  # shiritori_games#showで使用。次のターンを表示するためのメソッド
+  # 5人目まで投稿されたら「ゲーム終了」と表示
   def next_turn
     plus_count = drawings.count + 1
     if plus_count <= 5
@@ -21,4 +23,24 @@ class ShiritoriGame < ApplicationRecord
       'ゲーム終了'
     end
   end
+
+  # 投稿5つが揃ったら、しりとりが成功か失敗かを判定するメソッド
+  # 成功した場合statusをsuccessに、失敗した場合statusをfailureに変更する
+  # 投稿が5つ未満の場合は判定を行わずstatusをin_progressのままにする
+  def check_status
+    if self.drawings.count == 5
+      title_a = self.drawings.map { |d| d.title }
+      if title_a[0].split('').last == title_a[1].split('').first &&
+        title_a[1].split('').last == title_a[2].split('').first &&
+        title_a[2].split('').last == title_a[3].split('').first &&
+        title_a[3].split('').last == title_a[4].split('').first
+        self.success!
+      else
+        self.failure!
+      end
+    elsif self.drawings.count < 5
+      self.in_progress!
+    end
+  end
+
 end

@@ -5,7 +5,7 @@
   <thead>
     <tr>
       <th>タイトル</th>
-      <th>ステータス</th>
+      <th>しりとり</th>
       <th>作成日時</th>
       <th>操作</th>
     </tr>
@@ -14,7 +14,7 @@
     <% @shiritori_games.each do |game| %>
       <tr>
         <td><%= game.game_title %></td>
-        <td><%= game.status.humanize %></td>
+        <td><%= game.enum_i18n(:status) %></td>
         <td><%= game.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
         <td>
           <%= link_to '表示', shiritori_game_path(game), class: "btn btn-secondary btn-sm" %>
