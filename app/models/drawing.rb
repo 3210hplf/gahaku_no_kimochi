@@ -9,6 +9,8 @@ class Drawing < ApplicationRecord
   enum turn_count: { first_turn: 0, second_turn: 1, third_turn: 2, fourth_turn: 3, fifth_turn: 4 }
   # titleカラムに対して、値が空でないこと・最大15文字以下であること
   validates :title, presence: true, length: { maximum: 15 }
+  # artworkカラムに対して、値が空でないこと
+  validates :artwork, presence: true
 
   # しりとりが進行中の場合タイトルを隠し、成功か失敗の結果が出るとタイトルを表示するメソッド
   def display_title
