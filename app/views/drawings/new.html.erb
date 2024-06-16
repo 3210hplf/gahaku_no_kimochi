@@ -1,32 +1,39 @@
-<!-- app/views/drawings/new.html.erb -->
-<h1 class="text-2xl font-bold mb-4">がはくの出展</h1>
-<%= form_with model: @drawing, url: shiritori_game_drawings_path, local: true, class: "form-control" do |form| %>
+<div class="card shadow-lg compact bg-white p-4">
+  <div class="card-body">
+    <h1 class="text-2xl font-bold mb-4 text-center">
+      がはくの出展
+    </h1>
 
-  <div class="form-group mb-4">
-    <%= form.label :turn_count, '何人目のがはくでしょうか？', class: "label" %>
-    <%= form.select :turn_count, Drawing.enum_i18n(:turn_count), class: "select select-bordered w-full" %>
+    <%= form_with model: @drawing, url: shiritori_game_drawings_path, local: true, class: "space-y-4" do |form| %>
+      <div class="form-group">
+        <%= form.label :turn_count, '何人目のがはくでしょうか？', class: "label text-lg" %>
+        <%= form.select :turn_count, Drawing.enum_i18n(:turn_count), class: "select select-bordered w-full max-w-xs rounded-lg" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :artwork, "写真を選択", class: "label text-lg" %>
+        <%= form.file_field :artwork, class: "file-input file-input-bordered w-full" %>
+        <%= form.hidden_field :artwork_cache %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :title, "タイトル（ひらがな入力）", class: "label text-lg" %>
+        <%= form.text_field :title, class: "input input-bordered w-full" %>
+      </div>
+
+      <div class="form-group">
+        <%= image_tag @drawing.artwork_url, id: "preview", width: "300", height: "200" if @drawing.artwork.present? %>
+      </div>
+
+      <%= form.hidden_field :shiritori_game_id, value: params[:shiritori_game_id] %>
+
+      <div class="form-group text-center">
+        <%= form.submit "投稿", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <div class="form-group text-center mt-4">
+      <%= link_to '戻る', shiritori_game_path(params[:shiritori_game_id]), class: "btn btn-secondary" %>
+    </div>
   </div>
-
-  <div class="form-group mb-4">
-    <%= form.label :artwork, "写真を選択", class: "label" %>
-    <%= form.file_field :artwork, class: "file-input file-input-bordered w-full" %>
-    <%= form.hidden_field :artwork_cache %>
-  </div>
-
-  <div class="form-group mb-4">
-    <%= form.label :title, "タイトル（ひらがな入力）", class: "label" %>
-    <%= form.text_field :title, class: "input input-bordered w-full" %>
-  </div>
-
-  <div class="form-group mb-4">
-    <%= image_tag @drawing.artwork_url, id: "preview", width: "300", height: "200" if @drawing.artwork.present? %>
-  </div>
-
-  <%= form.hidden_field :shiritori_game_id, value: params[:shiritori_game_id] %>
-
-  <div class="form-group">
-    <%= form.submit "投稿", class: "btn btn-primary" %>
-  </div>
-<% end %>
-
-<%= link_to '戻る', shiritori_game_path(params[:shiritori_game_id]), class: "btn btn-secondary mt-4" %>
+</div>

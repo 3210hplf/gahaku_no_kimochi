@@ -1,21 +1,36 @@
-<h1 class="text-2xl font-bold mb-4"><%= @shiritori_game.game_title %></h1>
+<div class="card shadow-lg compact bg-base-100 p-4">
+  <div class="card-body">
+    <h1 class="text-2xl font-bold mb-4 text-center">
+      <%= @shiritori_game.game_title %>
+    </h1>
 
-<p class="text-lg mb-2">お題作成者: <%= @shiritori_game.user.name %></p>
-<p class="text-lg mb-2">状態: <%= @shiritori_game.enum_i18n(:status) %></p>
-<p class="text-lg mb-4">作成日時: <%= @shiritori_game.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+    <p class="text-lg mb-2">お題作成者: <%= @shiritori_game.user.name %></p>
+    <p class="text-lg mb-2">状態: <%= @shiritori_game.enum_i18n(:status) %></p>
+    <p class="text-lg mb-4">作成日時: <%= @shiritori_game.created_at.strftime("%Y-%m-%d %H:%M") %></p>
 
-<h2 class="text-xl font-bold mb-4">描画一覧</h2>
-<% @drawings.each do |d|%>
-  <%= image_tag d.artwork_url, width: 300, height: 300 %>
-  <p class="text-lg mb-2"><%= d.enum_i18n(:turn_count) %></p>
-  <p class="text-lg mb-2"><%= d.user.name %>画伯</p>
-  <p class="text-lg mb-2">タイトル: <%= d.display_title %></p>
-<% end %>
+    <h2 class="text-xl font-bold mb-4 text-center">描画一覧</h2>
 
-<% if @shiritori_game.next_turn != 'ゲーム終了' %>
-  <%= link_to @shiritori_game.next_turn, new_shiritori_game_drawing_path(@shiritori_game), class: "btn btn-secondary mt-4" %>
-<% else %>
-  <span class="btn btn-secondary mt-4 disabled"><%= @shiritori_game.next_turn %></span>
-<% end %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <% @drawings.each do |d| %>
+        <div class="card shadow-md compact bg-base-100 p-4">
+          <%= image_tag d.artwork_url, class: "rounded-lg w-full h-64 object-cover" %>
+          <div class="mt-4">
+            <p class="text-lg mb-2"><%= d.enum_i18n(:turn_count) %></p>
+            <p class="text-lg mb-2"><%= d.user.name %>画伯</p>
+            <p class="text-lg mb-2">タイトル: <%= d.display_title %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-<%= link_to 'お題一覧に戻る', shiritori_games_path, class: "btn btn-secondary mt-4" %>
+    <div class="text-center mt-4">
+      <% if @shiritori_game.next_turn != 'ゲーム終了' %>
+        <%= link_to @shiritori_game.next_turn, new_shiritori_game_drawing_path(@shiritori_game), class: "btn btn-primary mt-4" %>
+      <% else %>
+        <span class="btn btn-primary mt-4 disabled"><%= @shiritori_game.next_turn %></span>
+      <% end %>
+
+      <%= link_to 'お題一覧に戻る', shiritori_games_path, class: "btn btn-secondary mt-4" %>
+    </div>
+  </div>
+</div>
