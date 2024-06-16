@@ -16,16 +16,24 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <% if logged_in? %>
-      <%= render 'shared/header' %>
-    <% else %>
-      <%= render 'shared/before_login_header' %>
-    <% end %>
+  <body class='flex flex-col'>
+    <!-- ヘッダー -->
+    <header>
+      <% if logged_in? %>
+        <%= render 'shared/header' %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+      <% end %>
+    </header>
+    <!-- フラッシュメッセ -->
     <%= render 'shared/flash_message' %>
+    <!-- アクションごとに表示 -->
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
-    <%= render 'shared/footer' %>
+    <!-- フッター -->
+    <div class="absolute bottom-0 w-full">
+      <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>

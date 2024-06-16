@@ -12,3 +12,20 @@
  *
  *= require_tree .
  *= require_self */
+
+ @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .menu-horizontal {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .menu-horizontal li {
+      width: 100%;
+      text-align: left;
+    }
+  }
