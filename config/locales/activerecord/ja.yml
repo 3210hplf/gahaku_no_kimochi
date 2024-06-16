@@ -2,6 +2,9 @@ ja:              # form_withで使われるヘルパーに対応
   activerecord:  # ActiveRecordモデルとその属性名に対応
     models:      # モデル名
       user: ユーザー
+      shiritori_game: しりとりゲーム
+      question: クイズ
+      choice: 選択肢
     attributes:  # モデルの属性名
       user:      # userモデル内の属性名
         email: メールアドレス
@@ -10,6 +13,13 @@ ja:              # form_withで使われるヘルパーに対応
         password_confirmation: パスワード確認
       shiritori_game:
         game_title: お題
+      question:
+        author: がはくのなまえ
+        age: ねんれい
+        image: さくひん
+        choices: こたえ
+      choice:
+        answer: こたえ
   enums:       # enumで定義した値に対応
     shiritori_game:
       status:
