@@ -1,28 +1,28 @@
-<div class="justify-center items-center m-4">
-  <%= form_with model: @question do |f| %>
-    <%#= render 'shared/error_messages', object: f.object %>
-    <div class="mb-3">
-      <%= f.label :author, "がはくのなまえ" %>
-      <%= f.text_field :author, class: "input input-bordered w-full max-w-xs" %>
+<div class="flex justify-center items-center m-4">
+  <%= form_with model: @question, class: "w-full max-w-lg bg-white p-6 rounded-lg shadow-lg" do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="mb-4">
+      <%= f.label :author, "がはくのなまえ", class: "block text-lg font-bold mb-2" %>
+      <%= f.text_field :author, class: "input input-bordered input-primary w-full max-w-xs", placeholder:'がはくくん' %>
     </div>
-    <div class="mb-3">
-      <%= f.label :age, "ねんれい" %>
-      <%= f.number_field :age, class: "input input-bordered w-full max-w-xs" %>
+    <div class="mb-4">
+      <%= f.label :age, "ねんれい", class: "block text-lg font-bold mb-2" %>
+      <%= f.number_field :age, class: "input input-bordered input-primary w-full max-w-xs", placeholder:'3' %>
     </div>
-    <div class="mb-3">
-      <%= f.label :image, "さくひん" %>
-      <%= f.file_field :image, class: "file-input file-input-bordered w-full max-w-xs", accept: 'image/*' %>
+    <div class="mb-4">
+      <%= f.label :image, "さくひん", class: "block text-lg font-bold mb-2" %>
+      <%= f.file_field :image, class: "file-input file-input-bordered file-input-primary w-full max-w-xs", accept: 'image/*' %>
       <%= f.hidden_field :image_cache %>
     </div>
-    <%# choieモデルも同じフォームで入力 %>
+    <p class="text-lg font-bold mb-2">答えの選択肢4つ（正解にチェック）</p>
     <%= f.fields_for :choices do |c_f| %>
-      <div class="mb-3">
-        <%= c_f.label :answer, "こたえ" %>
-        <%= c_f.text_field :answer, class: "input input-bordered w-full max-w-xs" %>
-        <%= c_f.label :correct_answer, "せいかいにチェック" %>
-        <%= c_f.check_box :correct_answer, class: "checkbox" %>
+      <div class="mt-4 flex relative">
+        <%= c_f.text_field :answer, class: "input input-bordered input-primary w-full max-w-xs", placeholder:'こたえ' %>
+        <%= c_f.check_box :correct_answer, class: "checkbox checkbox-primary absolute right-4 top-3" %>
       </div>
     <% end %>
-    <%= f.submit nil, class: "btn btn-primary", data: { disable_with: "登録" } %>
+    <div class="flex justify-center mt-10">
+      <%= f.submit "出展", class: "btn btn-primary btn-wide", data: { disable_with: "登録" } %>
+    </div>
   <% end %>
 </div>

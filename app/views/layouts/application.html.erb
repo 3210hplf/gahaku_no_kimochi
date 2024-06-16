@@ -25,15 +25,19 @@
         <%= render 'shared/before_login_header' %>
       <% end %>
     </header>
-    <!-- フラッシュメッセ -->
-    <%= render 'shared/flash_message' %>
-    <!-- アクションごとに表示 -->
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+    <main>
+      <div class="container mx-auto my-20 px-5 flex flex-col justify-center items-center">
+        <!-- フラッシュメッセ -->
+        <%= render 'shared/flash_message' %>
+        <!-- アクションごとに表示 -->
+        <div class="mt-10">
+          <%= yield %>
+        </div>
+      </div>
     </main>
     <!-- フッター -->
-    <div class="absolute bottom-0 w-full">
+    <footer>
       <%= render 'shared/footer' %>
-    </div>
+    </footer>
   </body>
 </html>
