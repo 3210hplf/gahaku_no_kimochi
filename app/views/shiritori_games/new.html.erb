@@ -1,27 +1,32 @@
-<h1 class="text-2xl font-bold mb-4">ゲームのお題を作成しましょう！<br>しばりをつけると面白くなるかも！</h1>
+<div class="card shadow-lg compact bg-white p-4">
+  <div class="card-body">
+    <h1 class="text-2xl font-bold mb-4 text-center">
+      ゲームのお題を作成しましょう！<br>
+      しばりをつけると面白くなるかも！
+    </h1>
 
+    <%= form_with model: @shiritori_game, local: true, class: "space-y-4" do |form| %>
+      <% if @shiritori_game.errors.any? %>
+        <div id="error_explanation" class="alert alert-error mb-4">
+          <ul>
+            <% @shiritori_game.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-<%= form_with model: @shiritori_game, local: true, class: "form-control" do |form| %>
-  <% if @shiritori_game.errors.any? %>
-    <div id="error_explanation" class="alert alert-error mb-4">
-      <ul>
-        <% @shiritori_game.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div class="form-group">
+        <%= form.label :game_title, class: "label text-lg" %>
+        <%= form.text_field :game_title, class: "input input-bordered w-full", placeholder: '3文字で, 一筆書きで など' %>
+      </div>
+      <p class="label text-lg">作成者: <%= current_user.name %></p>
 
-  <div class="form-group mb-4">
-    <%= form.label :game_title, class: "label" %>
-    <%= form.text_field :game_title, class: "input input-bordered w-full", placeholder: '3文字で, 一筆書きで など' %>
+      <%= form.hidden_field :status, value: "in_progress" %>
+
+      <div class="form-group text-center">
+        <%= form.submit '作成', class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-
-  <%= form.hidden_field :status, value: "in_progress" %>
-
-  <div class="form-group">
-    <%= form.submit class: "btn btn-primary" %>
-  </div>
-<% end %>
-
-  
+</div>
