@@ -6,7 +6,7 @@ module ShiritoriGamesHelper
       when "success"
         'success'
       when "failure"
-        'warning'
+        'error'
       end
     end
   end

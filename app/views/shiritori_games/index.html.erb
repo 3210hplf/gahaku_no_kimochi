@@ -5,8 +5,8 @@
   </div>
   <!-- 遊び方ボタン -->
   <div class="flex flex-col items-center justify-center my-4 space-y-4">
-  <button class="btn" onclick="my_modal_1.showModal()">遊び方</button>
-  <dialog id="my_modal_1" class="modal">
+    <button class="btn" onclick="my_modal_1.showModal()">遊び方</button>
+    <dialog id="my_modal_1" class="modal">
     <div class="modal-box">
       <h3 class="font-bold text-lg">しりとり展へようこそ</h3>
       <p class="py-4">1. 画伯の絵をしりとりで繋いでいくぞ<br>2. タイトルは文字数だけがわかる<br>3. 5つの絵が繋がるとしりとりが成立しているかを判定<br><br>結果が出るまでハラハラドキドキじゃ！<br>しりとりが成功することを祈っておる！<br>注意点か？<br>わしを書くとしりとりが終了してしまうぞ</p>
@@ -24,18 +24,18 @@
   <!-- 新規しりとりお題ボタン -->
   <%= link_to 'しりとりのお題を作成', new_shiritori_game_path, class: "btn btn-primary mb-6" %>
 
-  <!-- 作成されたゲーム一覧 -->
+  <!-- 作成されたお題一覧 -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <% @shiritori_games.each do |game| %>
       <div class="card w-full bg-white shadow-xl rounded-lg">
-        <div class="card-body">
-          <div class="card-title text-lg font-bold">
-            <%= link_to "しりとりのお題: #{game.game_title}", shiritori_game_path(game) %>
+        <div class="card-body flex flex-col items-center justify-center">
+          <div class="card-title text-2xl font-bold">
+            <%= link_to "お題: #{game.game_title}", shiritori_game_path(game) %>
           </div>
-          <div class="badge badge-<%= shiritori_status_class(game.status) %> gap-2 text-white">しりとり : <strong><%= game.enum_i18n(:status) %></strong></div>
-          <p class="text-sm"><strong><i class="fa fa-clock-o fa-1a"></i></strong> <%= game.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-          
-          <!-- Drawing Carousel -->
+          <div class="badge badge-<%=shiritori_status_class(game.status)%> gap-2 text-white text-l p-4">
+            <p>しりとり : <strong><%= game.enum_i18n(:status) %></strong></p>
+          </div>
+          <!-- カルーセルの表示 -->
           <div class="carousel w-full mb-4">
             <% game.drawings.each_with_index do |drawing, drawing_index| %>
               <div id="drawing-slide-<%= drawing_index %>" class="carousel-item w-full">
@@ -43,16 +43,14 @@
               </div>
             <% end %>
           </div>
-          
-          <!-- Drawing Carousel Navigation -->
           <div class="flex justify-center w-full py-2 gap-2">
             <% game.drawings.each_with_index do |_, drawing_index| %>
-              <a href="#drawing-slide-<%= drawing_index %>" class="btn btn-xs">•</a>
+              <a href="#drawing-slide-<%= drawing_index %>" class="btn btn-xs"><%= drawing_index + 1 %></a>
             <% end %>
           </div>
 
-          <div class="card-actions justify-end">
-            <%= link_to '表示', shiritori_game_path(game), class: "btn btn-neutral btn-sm" %>
+          <div class="card-actions justify-center">
+            <%= link_to '詳細', shiritori_game_path(game), class: "btn btn-neutral btn-sm" %>
           </div>
         </div>
       </div>
