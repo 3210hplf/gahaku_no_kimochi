@@ -14,4 +14,27 @@
  *= require_tree .
  *= require_self
  */
-
+ .picture-slider {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .picture-item {
+    min-width: 100%;
+  }
+  
+  @keyframes slide {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-100%); }
+    40% { transform: translateX(-200%); }
+    60% { transform: translateX(-300%); }
+    80% { transform: translateX(-400%); }
+    100% { transform: translateX(-500%); }
+  }
+  
+  .picture-slider {
+    display: flex;
+    width: calc(100% * 5); /* 画像の枚数に応じて変更 */
+    animation: slide 25s infinite;
+  }

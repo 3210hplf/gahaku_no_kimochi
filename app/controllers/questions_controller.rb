@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   # ログインしていないユーザーもplay, answer, indexアクションにアクセスできるようにする
-  skip_before_action :require_login, only: %i[play answer index]
+  skip_before_action :require_login, only: %i[play answer index new create correct]
   def play
     @q = Question.all.sample
     @choices = @q.choices

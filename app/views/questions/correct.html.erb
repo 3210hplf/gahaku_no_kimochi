@@ -1,19 +1,54 @@
-<div class="w-5/6 mx-auto max-w-screen-xl my-0">
-  <div class="flex h-0 justify-center items-center my-4">
-    <%= image_tag 'pinpon.png' %>
+<section class="relative min-h-screen bg-cover flex items-center justify-center" style="background-image: url('/3.png');">
+  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div class="relative flex text-center text-neutral-content">
+    <div class="max-auto">
+      <h1 class="mb-5 text-5xl font-bold">上手く描けないから価値がある</h1>
+      <p class="mb-5">このアプリは、あなたが画伯となって芸術を投稿できます。<br>本物の芸術は万人に分からないからこそ価値がある。</p>
+      <%= link_to '今すぐ始める', new_user_path, class: "btn btn-primary" %>
+    </div>
   </div>
-  <div class="flex h-40 justify-center items-center my-4">
-  <%= image_tag 'gahakukun_maru.png', width: 100, height: 100 %>
+</section>
+<section class="py-12">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-8">アプリの機能</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="card bg-base-100 shadow-md">
+        <div class="card-body">
+          <div class="text-4xl mb-4">
+            <i class="fa fa-quora" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-xl font-bold">クイズ展</h3>
+          <p>※ログイン不要<br>・作品の題名を当てる4択クイズです<br>・クイズを投稿することもできます</p>
+          <%= link_to 'クイズ展へ', play_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-md">
+        <div class="card-body">
+          <div class="text-4xl mb-4">
+            <i class="fa fa-users" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-xl font-bold">しりとり展</h3>
+          <p>※ログインが必要です<br>・他のユーザーとの絵しりとりができます<br>・5人の画伯が揃うまで結果は分かりません</p>
+          <%= link_to 'しりとり展へ', shiritori_games_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-md">
+        <div class="card-body">
+          <div class="text-4xl mb-4">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3 class="text-xl font-bold">アトリエ展</h3>
+          <p>※coming soon<br>・アプリ上で絵を描くことができます<br>書いた絵は他展へ投稿ができます</p>
+          <div class="btn btn-primary">coming soon</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="flex h-20 justify-center items-center my-4">
-    <button class="btn btn-primary m-4">
-      <%= link_to '最初に戻る', root_path %>
-    </button>
-    <button class="btn btn-primary m-4">
-      <%= link_to '次の問題へ', play_path %>
-    </button>
-    <button class="btn btn-primary m-4">
-      <%= link_to "結果をXでシェア", "https://twitter.com/share?url&text=画伯の気持ちがわかったよ！%0a%23がはくのきもち%0a%23ミニアプリweek%0a%23RUNTEQ%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" %>
-    </button>
+</section>
+<section class="py-12 bg-base-200">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-8">ログインの必要性</h2>
+    <p class="mb-5">アプリのすべての機能を利用するには、ログインが必要です。まだアカウントをお持ちでない方は、登録してください。</p>
+    <a href="/signup" class="btn btn-primary">登録する</a>
   </div>
-</div>
+</section>
