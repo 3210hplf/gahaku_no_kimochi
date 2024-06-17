@@ -1,13 +1,36 @@
 <div class="container mx-auto p-4 flex justify-center flex-col">
-  <%= link_to '新しいしりとりゲームを作成', new_shiritori_game_path, class: "btn btn-primary mb-4" %>
+  <!-- しりとり展画像 -->
+  <div class="flex flex-col items-center justify-center my-4 space-y-4">
+    <%= image_tag 'shiritori.png', class: 'rounded-lg' %>
+  </div>
+  <!-- 遊び方ボタン -->
+  <div class="flex flex-col items-center justify-center my-4 space-y-4">
+  <button class="btn" onclick="my_modal_1.showModal()">遊び方</button>
+  <dialog id="my_modal_1" class="modal">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg">しりとり展へようこそ</h3>
+      <p class="py-4">1. 画伯の絵をしりとりで繋いでいくぞ<br>2. タイトルは文字数だけがわかる<br>3. 5つの絵が繋がるとしりとりが成立しているかを判定<br><br>結果が出るまでハラハラドキドキじゃ！<br>しりとりが成功することを祈っておる！<br>注意点か？<br>わしを書くとしりとりが終了してしまうぞ</p>
+      <div class="flex justify-center items-center">
+        <%= image_tag 'gahakukun_maru.png', class: 'w-32 h-32 rounded-full' %>
+      </div>
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn">閉じる</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
 
-  <!-- Card List -->
+  <!-- 新規しりとりお題ボタン -->
+  <%= link_to 'しりとりのお題を作成', new_shiritori_game_path, class: "btn btn-primary mb-6" %>
+
+  <!-- 作成されたゲーム一覧 -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <% @shiritori_games.each do |game| %>
       <div class="card w-full bg-white shadow-xl rounded-lg">
         <div class="card-body">
           <div class="card-title text-lg font-bold">
-            <%= link_to "ゲーム名: #{game.game_title}", shiritori_game_path(game) %>
+            <%= link_to "しりとりのお題: #{game.game_title}", shiritori_game_path(game) %>
           </div>
           <div class="badge badge-<%= shiritori_status_class(game.status) %> gap-2 text-white">しりとり : <strong><%= game.enum_i18n(:status) %></strong></div>
           <p class="text-sm"><strong><i class="fa fa-clock-o fa-1a"></i></strong> <%= game.created_at.strftime("%Y-%m-%d %H:%M") %></p>
