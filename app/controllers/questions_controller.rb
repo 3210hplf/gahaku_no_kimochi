@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def index
+  def correct
     @questions = Question.all
   end
 
