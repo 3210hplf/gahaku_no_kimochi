@@ -6,10 +6,12 @@
     <% @shiritori_games.each do |game| %>
       <div class="card w-full bg-white shadow-xl rounded-lg">
         <div class="card-body">
-          <h2 class="card-title text-lg font-bold">ゲーム名: <%= game.game_title %></h2>
-          <p class="text-sm"><strong>しりとり:</strong> <%= game.enum_i18n(:status) %></p>
-          <p class="text-sm"><strong>作成日時:</strong> <%= game.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-
+          <div class="card-title text-lg font-bold">
+            <%= link_to "ゲーム名: #{game.game_title}", shiritori_game_path(game) %>
+          </div>
+          <div class="badge badge-<%= shiritori_status_class(game.status) %> gap-2 text-white">しりとり : <strong><%= game.enum_i18n(:status) %></strong></div>
+          <p class="text-sm"><strong><i class="fa fa-clock-o fa-1a"></i></strong> <%= game.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+          
           <!-- Drawing Carousel -->
           <div class="carousel w-full mb-4">
             <% game.drawings.each_with_index do |drawing, drawing_index| %>
@@ -27,7 +29,7 @@
           </div>
 
           <div class="card-actions justify-end">
-            <%= link_to '表示', shiritori_game_path(game), class: "btn btn-secondary btn-sm" %>
+            <%= link_to '表示', shiritori_game_path(game), class: "btn btn-neutral btn-sm" %>
           </div>
         </div>
       </div>
