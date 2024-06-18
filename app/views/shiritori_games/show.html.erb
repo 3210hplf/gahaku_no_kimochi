@@ -17,9 +17,9 @@
           <%= image_tag d.artwork_url, class: "rounded-lg w-full h-64 object-cover" %>
           <div class="mt-4 flex flex-col justify-center">
             <p class="text-2xl mb-2">タイトル : <%= d.display_title %></p>
-            <p class="text-lg mb-2"><%= d.enum_i18n(:turn_count )%> : <%= d.user.name %>画伯</p>
+            <p class="text-lg mb-2"><%= d.enum_i18n(:turn_count)%> : <%= d.user.name %>画伯</p>
             <% if current_user.own?(d) %>
-              <%= link_to "Xでシェア", "https://twitter.com/share?url&text=しりとり展に投稿したよ！%0a%23がはくのきもち%0a%23バトラン%0a%23RUNTEQ%0a", class: "btn btn-link p-2", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" %>
+              <%= link_to "Xでシェア", "https://twitter.com/share?url=#{request.original_url}&text=お題『#{d.shiritori_game.game_title}』に#{d.enum_i18n(:turn_count)}の画伯で投稿したよ！%0aしりとり成功できるかな？%0a%23がはくのきもち%20%23バトラン%20%23RUNTEQ%0a", class: "btn btn-link p-2", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" %>
             <% end %>
           </div>
         </div>
