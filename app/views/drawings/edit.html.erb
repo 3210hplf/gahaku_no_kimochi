@@ -1,6 +1,6 @@
 <div class="card shadow-lg compact bg-white p-4">
   <div class="card-body">
-    <%= form_with model: @drawing, url: shiritori_game_drawings_path, local: true, class: "space-y-4" do |f| %>
+    <%= form_with model: @drawing, local: true, class: "space-y-4" do |f| %>
       <!-- エラーメッセージの表示 -->
       <%= render 'shared/error_messages', object: f.object %>
 
@@ -25,15 +25,15 @@
         <%= image_tag @drawing.artwork_url, id: "preview", width: "300", height: "200" if @drawing.artwork.present? %>
       </div>
 
-      <%= f.hidden_field :shiritori_game_id, value: params[:shiritori_game_id] %>
+      <%= f.hidden_field :shiritori_game_id, value: @drawing.shiritori_game.id %>
 
       <div class="form-group text-center">
-        <%= f.submit "投稿", class: "btn btn-primary" %>
+        <%= f.submit "編集", class: "btn btn-primary" %>
       </div>
     <% end %>
 
     <div class="form-group text-center mt-4">
-      <%= link_to '戻る', shiritori_game_path(params[:shiritori_game_id]), class: "btn btn-secondary" %>
+      <%= link_to '戻る', shiritori_game_path(@drawing.shiritori_game), class: "btn btn-default" %>
     </div>
   </div>
 </div>

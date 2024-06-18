@@ -1,6 +1,8 @@
 <div class="flex justify-center items-center m-4">
   <%= form_with model: @question, class: "w-full max-w-lg bg-white p-6 rounded-lg shadow-lg" do |f| %>
+    <!-- エラーメッセージの表示 -->
     <%= render 'shared/error_messages', object: f.object %>
+
     <div class="mb-4">
       <%= f.label :author, "がはくのなまえ", class: "block text-lg font-bold mb-2" %>
       <%= f.text_field :author, class: "input input-bordered input-primary w-full max-w-xs", placeholder:'がはくくん' %>

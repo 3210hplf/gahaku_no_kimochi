@@ -1,4 +1,5 @@
 class ShiritoriGamesController < ApplicationController
+  skip_before_action :require_login, only: %i[index]
   def new
     @shiritori_game = ShiritoriGame.new
   end
@@ -8,7 +9,7 @@ class ShiritoriGamesController < ApplicationController
     if @shiritori_game.save
       redirect_to new_shiritori_game_drawing_path(@shiritori_game), notice: 'ゲームのお題を作成しました! あなたが1人目のがはくとなりましょう!'
     else
-      flash.now[:alert] = 'お題の作成に失敗しました。'
+      flash.now[:danger] = 'お題の作成に失敗しました。'
       render :new, status: :unprocessable_entity
     end
   end

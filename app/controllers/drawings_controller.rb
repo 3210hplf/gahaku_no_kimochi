@@ -8,11 +8,28 @@ class DrawingsController < ApplicationController
     if @drawing.save
       # しりとりゲームのステータスを更新
       @drawing.shiritori_game.check_status
-      redirect_to shiritori_game_path(@drawing.shiritori_game)
+      redirect_to shiritori_game_path(@drawing.shiritori_game), notice: '画伯の絵を投稿しました！'
     else
-      render :new
+      flash.now[:alert] = '画伯の絵の投稿に失敗しました。'
+      render :new, status: :unprocessable_entity
     end
   end
+
+  def edit
+    @drawing = Drawing.find(params[:id])
+  end
+
+  def update
+    @drawing = Drawing.find(params[:id])
+    if @drawing.update(drawing_params)
+      @drawing.shiritori_game.check_status
+      redirect_to shiritori_game_path(@drawing.shiritori_game), notice: '画伯の絵を更新しました！'
+    else
+      flash.now[:alert] = '画伯の絵の更新に失敗しました。'
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
 
   private
 
