@@ -20,6 +20,10 @@ ja:              # form_withで使われるヘルパーに対応
         choices: こたえ
       choice:
         answer: こたえ
+      drawing:
+        title: タイトル
+        artwork: さくひん
+        turn_count: 何人目
   enums:       # enumで定義した値に対応
     shiritori_game:
       status:

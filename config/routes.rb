@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   get 'questions/correct', to: 'questions#correct', :as => :correct
   get 'questions/incorrect', to: 'questions#incorrect', :as => :incorrect
   resources :shiritori_games, only: %i[new create index show] do
-    resources :drawings, only: %i[new create index]
+    resources :drawings, only: %i[new create index edit update], shallow: true
   end
 end
