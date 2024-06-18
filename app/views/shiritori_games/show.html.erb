@@ -1,10 +1,10 @@
 <div class="card shadow-lg compact bg-base-100 p-4">
   <div class="card-body flex flex-col items-center justify-center">
-    <div class="text-2xl font-bold mb-4 text-center">
+    <div class="text-3xl font-bold mb-4 text-center">
       <p>お題 : <%= @shiritori_game.game_title %></p>
     </div>
-    <div class="badge badge-<%= shiritori_status_class(@shiritori_game.status) %> gap-2 text-black text-2xl p-4">
-      <p class="p-4">しりとり : <%= @shiritori_game.enum_i18n(:status) %></p>
+    <div class="max-w-60 alert <%=shiritori_status_class(@shiritori_game.status)%>">
+      <p>しりとり : <strong><%= @shiritori_game.enum_i18n(:status) %></strong></p>
     </div>
     <div class="flex flex-row justify-around">
       <p class="text-xl mb-2"><i class="fa fa-pencil" aria-hidden="true"></i> <%= @shiritori_game.user.name %></p>

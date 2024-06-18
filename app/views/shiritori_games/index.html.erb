@@ -30,10 +30,10 @@
     <% @shiritori_games.each do |game| %>
       <div class="card w-full bg-white shadow-xl rounded-lg">
         <div class="card-body flex flex-col items-center justify-center">
-          <div class="card-title text-2xl font-bold">
+          <div class="card-title text-3xl">
             <%= link_to "お題: #{game.game_title}", shiritori_game_path(game) %>
           </div>
-          <div class="alert <%=shiritori_status_class(game.status)%>">
+          <div class="max-w-60 alert <%=shiritori_status_class(game.status)%>">
             <p>しりとり : <strong><%= game.enum_i18n(:status) %></strong></p>
           </div>
 
