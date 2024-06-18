@@ -3,7 +3,7 @@
     <div class="text-2xl font-bold mb-4 text-center">
       <p>お題 : <%= @shiritori_game.game_title %></p>
     </div>
-    <div class="badge badge-<%= shiritori_status_class(@shiritori_game.status) %> gap-2 text-white text-2xl p-4">
+    <div class="badge badge-<%= shiritori_status_class(@shiritori_game.status) %> gap-2 text-black text-2xl p-4">
       <p class="p-4">しりとり : <%= @shiritori_game.enum_i18n(:status) %></p>
     </div>
     <div class="flex flex-row justify-around">
