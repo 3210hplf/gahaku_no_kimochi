@@ -13,4 +13,9 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
   # 値が空でないこと・ユニークな値であること
   validates :email, presence: true, uniqueness: true
+
+  # 渡された(object)はそのユーザーが作成したかを確認するメソッド
+  def own?(object)
+    id == object&.user_id
+  end
 end

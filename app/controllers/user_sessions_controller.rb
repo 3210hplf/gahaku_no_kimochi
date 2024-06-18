@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_to root_path, success: 'ようこそ！ログイン完了です！'
+      redirect_to shiritori_games_path, success: 'ようこそ！ログイン完了です！'
     else
       flash.now[:danger] = 'ログインが上手くいきませんでした'
       render :new, status: :unprocessable_entity
