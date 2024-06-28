@@ -16,8 +16,9 @@
 
       <%= f.hidden_field :status, value: "in_progress" %>
 
-      <div class="form-group text-center">
+      <div class="text-center mt-4">
         <%= f.submit '作成', class: "btn btn-primary" %>
+        <%= link_to 'お題一覧に戻る', shiritori_games_path, class: "btn mt-4" %>
       </div>
     <% end %>
   </div>

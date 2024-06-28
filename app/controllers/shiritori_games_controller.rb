@@ -15,7 +15,7 @@ class ShiritoriGamesController < ApplicationController
   end
 
   def index
-    @shiritori_games = ShiritoriGame.all
+    @shiritori_games = ShiritoriGame.all.order(created_at: :desc)
   end
 
   def show
